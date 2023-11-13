@@ -65,6 +65,9 @@ export default function ServicesPage() {
                 <div>
                     Número de contato: {service.phoneNumber}
                 </div>
+                <Link to={`/services/${service.service_id}`} style={{textDecoration: "none", color: "black"}}>
+                  Ver detalhes...
+                </Link>
                 </div>
             )
         })}

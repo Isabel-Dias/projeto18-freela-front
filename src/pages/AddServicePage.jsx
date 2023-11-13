@@ -44,9 +44,6 @@ export default function AddServicePage() {
             description,
             price: numericPrice
         }
-
-        console.log(newService);
-        console.log(token);
     
         axios.post(`${import.meta.env.VITE_API_URL}/services`, newService, { headers: { authorization: `Bearer ${token}` }})
         .then((response) => {

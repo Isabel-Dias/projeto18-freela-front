@@ -5,6 +5,7 @@ import SignUpPage from "./pages/SignUpPage";
 import AddServicePage from "./pages/AddServicePage";
 import ServicesPage from "./pages/ServicesPage";
 import UserContext from "./contexts/UserContext";
+import ServiceDetailsPage from "./pages/ServiceDetailsPage";
 
 function App() {
   const [userData, setUserData] = useState("");
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="allServices" element={<ServicesPage />} />
           <Route path="/addService" element={<AddServicePage />} />
+          <Route path="/services/:id" element={<ServiceDetailsPage />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
