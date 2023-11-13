@@ -9,9 +9,8 @@ export default function SignUpPage() {
     const [password, setPassword] = useState("")
     const [birthday, setBirthday] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
-    const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
-    const [estate, setEstate] = useState("")
+    const [state, setState] = useState("")
     const navigate = useNavigate()
 
     function registerUser(event) {
@@ -23,17 +22,12 @@ export default function SignUpPage() {
             password,
             birthday,
             phoneNumber,
-            address,
             city,
-            estate
+            state
         }
 
         if (Number(phoneNumber.length) < 9) {
             alert("O número de telefone deve ter no mínimo 9 dígitos")
-        }
-
-        if (estate.length != 2) {
-            alert("O estado deve ser informado no formato de sigla")
         }
 
         axios.post(`${import.meta.env.VITE_API_URL}/signup`, userData)
@@ -97,14 +91,6 @@ export default function SignUpPage() {
                     />
 
                     <input
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Rua, número e bairro"
-                        type="text"
-                        required
-                    />
-
-                    <input
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                         placeholder="Cidade"
@@ -113,9 +99,9 @@ export default function SignUpPage() {
                     />
 
                     <input
-                        value={estate}
-                        onChange={(e) => setEstate(e.target.value)}
-                        placeholder="Estado (Sigla)"
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                        placeholder="Estado"
                         type="text"
                         required
                     />
@@ -125,7 +111,7 @@ export default function SignUpPage() {
                     </button>
 
                 </form>
-                <Link to="/">
+                <Link to="/" style={{textDecoration: "none", color: "black"}}>
                     Já tem uma conta? Entre aqui!
                 </Link>
             </SignUpContainer>

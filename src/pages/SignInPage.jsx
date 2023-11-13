@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import axios from "axios";
 
+
 export default function SignInPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("");
     const navigate = useNavigate()
 
     function Login(event) {
@@ -19,9 +19,8 @@ export default function SignInPage() {
 
         axios.post(`${import.meta.env.VITE_API_URL}/signin`, data)
             .then((response) => {
-                setToken(response.data);
-                localStorage.setItem("token", response.data);
-                navigate("/AllServices")
+                localStorage.setItem("token", response.data.token);
+                navigate("/allServices")
             })
             .catch((error) => {
                 if (error.response.status === 404) {
@@ -56,7 +55,7 @@ export default function SignInPage() {
                         Entrar
                     </button>
                 </form>
-                <Link to="/SignUp" >
+                <Link to="/signUp" >
                     Ainda não tem uma conta? Cadastre-se
                 </Link>
             </SignInContainer>
